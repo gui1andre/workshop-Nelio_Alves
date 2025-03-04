@@ -1,14 +1,8 @@
 package com.gui1andre.workshop.Config;
 
-import com.gui1andre.workshop.entities.Category;
-import com.gui1andre.workshop.entities.Order;
-import com.gui1andre.workshop.entities.Product;
-import com.gui1andre.workshop.entities.User;
+import com.gui1andre.workshop.entities.*;
 import com.gui1andre.workshop.entities.enums.OrderStatus;
-import com.gui1andre.workshop.repository.CategoryRepository;
-import com.gui1andre.workshop.repository.OrderRepository;
-import com.gui1andre.workshop.repository.ProductRepository;
-import com.gui1andre.workshop.repository.UserRepository;
+import com.gui1andre.workshop.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Configuration;
@@ -32,6 +26,9 @@ public class TestConfig implements CommandLineRunner {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private OrderItemRepository orderItemRepository;
 
 
     @Override
@@ -69,6 +66,12 @@ public class TestConfig implements CommandLineRunner {
 
         productRepository.saveAll(Arrays.asList(p1, p2, p3, p4, p5));
 
+        OrderItem oi1 = new OrderItem(o1, p1, 2, p1.getPrice());
+        OrderItem oi2 = new OrderItem(o1, p3, 1, p3.getPrice());
+        OrderItem oi3 = new OrderItem(o2, p3, 2, p3.getPrice());
+        OrderItem oi4 = new OrderItem(o3, p5, 2, p5.getPrice());
+
+        orderItemRepository.saveAll(Arrays.asList(oi1, oi2, oi3, oi4));
 
     }
 }

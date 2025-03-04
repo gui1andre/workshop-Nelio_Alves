@@ -1,6 +1,5 @@
 package com.gui1andre.workshop.entities.enums;
 
-import com.gui1andre.workshop.entities.Order;
 
 public enum OrderStatus {
     WAITING_PAYMENT(1),
