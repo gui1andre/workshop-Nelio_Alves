@@ -1,7 +1,7 @@
 package com.gui1andre.workshop.resources;
 
-import com.gui1andre.workshop.entities.Order;
-import com.gui1andre.workshop.services.OrderService;
+import com.gui1andre.workshop.entities.Product;
+import com.gui1andre.workshop.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,20 +12,20 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/orders")
-public class OrderResource {
+@RequestMapping(value = "/products")
+public class ProductResource {
 
     @Autowired
-    private OrderService orderService;
+    private ProductService productService;
 
     @GetMapping
-    public ResponseEntity<List<Order>> findAll(){
-        var orders = orderService.findAll();
-        return ResponseEntity.ok(orders);
+    public ResponseEntity<List<Product>> findAll(){
+        var products = productService.findAll();
+        return ResponseEntity.ok(products);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Order> findById(@PathVariable Long id){
-        return ResponseEntity.ok(orderService.findById(id));
+    public ResponseEntity<Product> findById(@PathVariable Long id){
+        return ResponseEntity.ok(productService.findById(id));
     }
 }
